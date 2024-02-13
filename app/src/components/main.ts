@@ -4,7 +4,7 @@
 **/
 
 import { InfluxDB, Point } from '@influxdata/influxdb-client'
-import { CONFIG_VARIABLES } from './env/env'
+import { CONFIG_VARIABLES } from '../env/env'
 
 /** Environment variables **/
 const url = CONFIG_VARIABLES.INFLUX_URL
@@ -22,14 +22,21 @@ const queryApi = new InfluxDB({url, token}).getQueryApi(org)
 /** To avoid SQL injection, use a string literal for the query. */
 const fluxQuery = 'from(bucket:"TEST") |> range(start: 0) |> filter(fn: (r) => r._measurement == "temperature")'
 
-const myQuery = async () => {
+// Definir la función que se ejecutará cada 5 segundos
+function miFuncion() {
+  console.log('Esta función se ejecutará cada 5 segundos');
+}
+
+// Llamar a la función cada 5 segundos utilizando setInterval
+setInterval(miFuncion, 5000); // 5000 milisegundos = 5 segundos
+
+
+/*const myQuery = async () => {
   for await (const {values, tableMeta} of queryApi.iterateRows(fluxQuery)) {
     const o = tableMeta.toObject(values)
     console.log(
-      `${o._time} ${o._measurement} in '${o.location}' (${o.sensor_id}): ${o._field}=${o._value}`
+      `${o._time} ${o._measurement}`
     )
   }
 }
-
-/** Execute a query and receive line table metadata and rows. */
-myQuery()
+myQuery()*/

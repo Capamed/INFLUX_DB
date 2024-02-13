@@ -10,10 +10,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.11.17"
+    "@types/node": "^20.11.17",
+    "@types/node-cron": "^3.0.11"
   },
   "dependencies": {
     "@influxdata/influxdb-client": "^1.33.2",
-    "@influxdata/influxdb-client-apis": "^1.33.2"
+    "@influxdata/influxdb-client-apis": "^1.33.2",
+    "node-cron": "^3.0.3"
   }
 }
