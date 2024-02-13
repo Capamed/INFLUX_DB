@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Contenedor principal */
+        .contenedor {
+          position: relative;
+        }
+    
+        /* Estilo para la imagen */
+        .imagen {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* Para asegurar que la imagen cubra todo el contenedor */
+        }
+    
+        /* Estilo para el cuadrado */
+        .sistemaC02 {
+            position: absolute;
+            top: 38%;
+            left: 18%;
+            transform: translate(-50%, -50%);
+            width: 444px;
+            height: 131px;
+            background-color: rgba(158, 175, 189, 0.5);
+        }
+    
+        .sistemaAire{
+            position: absolute;
+            top: 54%;
+            left: 44%;
+            transform: translate(-50%, -50%);
+            width: 190px;
+            height: 305px;
+            background-color: rgba(158, 175, 189, 0.5);
+        }
+    
+        .sistemaVapor {
+            position: absolute;
+            top: 51%;
+            left: 76%;
+            transform: translate(-50%, -50%);
+            width: 642px;
+            height: 251px;
+            background-color: rgba(158, 175, 189, 0.5);
+        }
+    
+        .sistemaRefrigeracion {
+            position: absolute;
+            top: 21%;
+            left: 53%;
+            transform: translate(-50%, -50%);
+            width: 211px;
+            height: 135px;
+            background-color: rgba(158, 175, 189, 0.5);
+        }
+    
+      </style>
+</head>
+<body>
+
+ <!-- Contenedor principal -->
+  <div class="contenedor">
+    <!-- Imagen -->
+
+    <img class="imagen" src="/area51.png" alt="area51.png">
+    
+    <% data.forEach(item => { %>
+        <% console.log(item) %>
+        <% if (item.id === 'datos00') { %>
+            <div class="sistemaC02" style="<%= (item.value === 0) ? 'background-color: #00ff6a80;':(item.value >= 1)?'background-color: #ff000080;':''%>"></div>
+        <% } %>
+        
+        <% if (item.id === 'datos11') { %>
+            <div class="sistemaRefrigeracion" style="<%= (item.value === 0) ? 'background-color: #00ff6a80;':(item.value >= 1)?'background-color: #ff000080;':''%>"></div>
+        <% } %>
+
+        <% if (item.id === 'datos22') { %>
+            <div class="sistemaVapor" style="<%= (item.value === 0) ? 'background-color: #00ff6a80;':(item.value >= 1)?'background-color: #ff000080;':''%>"></div>
+        <% } %>
+
+        <% if (item.id === 'datos33') { %>
+            <div class="sistemaAire" style="<%= (item.value === 0) ? 'background-color: #00ff6a80;':(item.value >= 1)?'background-color: #ff000080;':''%>"></div>
+        <% } %>
+        
+    <% }); %>
+   
+  </div>
+</body>
+</html>
+
